@@ -13,6 +13,9 @@ const FormEquipos = () => {
 
   const guardar = async (e) => {
     e.preventDefault();
+    if(nombre == "" || disciplina == null){
+      return
+    }
     const datosAEnviar = {
       nombre_equipo: nombre,
       id_disciplina: disciplina.id_disciplina

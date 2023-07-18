@@ -6,7 +6,6 @@ export async function GET(){
     try{
         const conexion = await db.getConnection();
         const result = await conexion.query('SELECT * FROM proyecto.tbl_disciplinas;')
-        console.log(result)
         return NextResponse.json(result);
     }catch(error){
         console.log(error)

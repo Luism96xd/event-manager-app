@@ -24,7 +24,7 @@ async function EventosPage() {
                 <tbody>
                     {datos.map((lugar) => {
                         return (
-                            <tr key={lugar.id_lugar}>
+                            <tr key={lugar.id_lugar} className="hover:bg-gray-200">
                                 <td>{lugar.id_lugar}</td>
                                 <td>{lugar.nombre_lugar}</td>
                             </tr>

@@ -7,6 +7,9 @@ const FormDisciplinas = () => {
 
   const guardar = async (e) => {
     e.preventDefault();
+    if(nombre == ""){
+      return
+    }
     const datosAEnviar = {
       nombre_disciplina: nombre
     }
@@ -17,7 +20,7 @@ const FormDisciplinas = () => {
   }
 
   return (
-    <form onSubmit={guardar} className='flex flex-col bg-gray-100 p-4 rounded-lg'>
+    <form onSubmit={guardar} className='flex flex-col justify-evenly bg-gray-100 p-4 rounded-lg'>
       <h1 className='text-2xl font-bold'>Crear Disciplina:</h1>
       <label htmlFor="nombre" className='flex flex-col my-2'>
         <span>Nombre:</span>

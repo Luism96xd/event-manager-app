@@ -25,7 +25,7 @@ const EquiposPage = async () => {
         <tbody>
           {datos.map((equipo, index) => {
             return (
-              <tr key={equipo.id_equipo}>
+              <tr key={equipo.id_equipo} className='hover:bg-gray-200'>
                 <td className='text-center'>{index + 1}</td>
                 <td className='text-center'>{equipo.nombre_equipo}</td>
                 <td className='text-center'>{equipo.nombre_disciplina}</td>

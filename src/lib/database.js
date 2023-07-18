@@ -1,36 +1,40 @@
 import mariadb from 'mariadb';
 
-class DB{
-    constructor(){
-        try{
-            const pool = mariadb.createPool({
-                host: 'localhost', 
-                user:'root', 
-                password: '123abc*',
-                port: 3306,
-                connectionLimit: 5,
-                timeout: 60000
-            });
-            this.pool = pool;
-        }catch(error){
-            console.log(error)
-        }
+class DB {
+    constructor() {
+        const pool = mariadb.createPool({
+            host: 'localhost',
+            user: 'root',
+            password: '123abc*',
+            port: 3306,
+            connectionLimit: 2,
+            trace: true
+        });
+        this.pool = pool;
     }
 
     async getConnection() {
         try {
+            console.log('establishing connection')
             this.connection = await this.pool.getConnection();
+            console.log('established')
+            return this.connection;
         } catch (error) {
             console.log(error);
             throw "No se pudo conectar a la base de datos: " + error;
         }
-        return this.connection;
     }
-    
-    async query(consulta){
-        const result = await this.connection.query(consulta);
-        this.connection.end();
-        return result;
+
+    async query(consulta) {
+        try {
+            const result = await this.connection.query(consulta);
+            return result;
+        } catch (error) {
+            console.log(error);
+            throw error;
+        } finally {
+            if (this.connection) this.connection.release();
+        }
     }
 }
 

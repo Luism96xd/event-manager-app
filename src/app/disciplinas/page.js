@@ -25,7 +25,7 @@ async function PageDisciplinas() {
                 {datos && <tbody>
                     {datos.map((lugar) => {
                         return (
-                            <tr key={lugar.id_disciplina}>
+                            <tr key={lugar.id_disciplina} className="hover:bg-gray-200">
                                 <td>{lugar.id_disciplina}</td>
                                 <td>{lugar.nombre_disciplina}</td>
                             </tr>

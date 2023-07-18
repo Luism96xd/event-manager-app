@@ -9,6 +9,9 @@ const FormLugares = () => {
 
   const guardar = async (e) => {
     e.preventDefault();
+    if(nombre == ""){
+      return
+    }
     const datosAEnviar = {
       nombre_lugar: nombre
     }
